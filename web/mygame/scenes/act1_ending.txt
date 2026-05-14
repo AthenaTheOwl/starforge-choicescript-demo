@@ -1,0 +1,7 @@
+Act 1 route complete.
+
+Scenes seen: ${scenes_seen}
+
+Resolve, empathy, tech, lattice, and crew trust remain available for the next adaptation pass.
+
+*ending

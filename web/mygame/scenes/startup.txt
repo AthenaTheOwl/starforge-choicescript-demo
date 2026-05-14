@@ -1,0 +1,90 @@
+*title Starforge Act 1
+*author Cessnya Lin
+
+*scene_list
+  startup
+  ch_00_prologue_floors_not_thrones
+  ch_01_cinder_hours
+  ch_02_the_debt_clock
+  ch_03_the_thing_in_the_rock
+  ch_04_contract_glitter_vein
+  ch_05_flicker_day
+  ch_06_minebreak
+  ch_07_exit_writ
+  ch_08_the_girl_with_the_shard
+  ch_09_a_name_given_not_owned
+  ch_09a_medical_autonomy
+  ch_09b_rowan_finds_vesper
+  ch_10_first_watch
+  ch_10a_personal_property
+  ch_10b_roster_roles_and_refusal
+  ch_11_shard_whispers
+  ch_11a_id_names_forms
+  ch_11b_senna_small_good_thing
+  ch_12_the_doctrine
+  ch_12a_crew_meal_dynamics
+  ch_12b_ai_game_night_probability
+  ch_13_shipboard_physics
+  ch_13a_starmap_hobby
+  ch_13b_coffee_ritual
+  ch_13c_asking_for_what_you_need
+  ch_13d_choosing_rest
+  ch_13e_water_is_not_a_test
+  ch_13f_avyanna_yes_reflex
+  ch_13g_rho_kenna_coffee
+  ch_14_dumb_reliability
+  ch_14a_first_contract_debrief
+  ch_14b_small_success_contract
+  ch_14c_bridge_transit_ritual
+  ch_14d_orin_teaches_bearing
+  ch_15_ghost_net_lesson
+  ch_15a_guild_station_protocols
+  ch_15b_first_purchase_decision
+  ch_15c_station_micro_errand_paperwork_and_predators
+  ch_15d_rival_crew_probe
+  ch_15e_maren_blocks
+  ch_16_breach_hymn
+  ch_16a_jalen_navigation_lesson
+  ch_16b_emergency_drill
+  ch_16c_maintenance_pairing_day
+  ch_16d_convoy_transit_comparison
+  ch_16e_senna_math_is_power
+  ch_17_rule_of_locality
+  ch_17a_assumption_lab
+  ch_17b_complaint_posting
+  ch_17c_reading_technical_manual
+  ch_17d_library_glossary_of_lies
+  ch_17e_nyx_and_halcyon_ward_lesson
+  ch_18_primordial_garden
+  ch_18a_cultural_context
+  ch_18b_station_overwhelm_recovery
+  ch_18c_grove_propagation_lesson
+  ch_19_contract_station_justice
+  ch_19a_contract_negotiation_witness
+  ch_19b_teaching_consent_to_client
+  ch_19c_receipt_practice
+  ch_20_the_receipt
+  ch_20a_quiet_ship_night
+  ch_20b_witnessing_crew_conflict
+  ch_20c_archive_ritual
+  ch_20d_aleena_pulls_elia_from_wreckage
+  act1_ending
+
+*create resolve 50
+*create empathy 50
+*create tech 50
+*create lattice 50
+*create crew_trust 50
+*create scenes_seen 0
+
+Full Act 1 is routed here as a ChoiceScript build.
+
+The spine follows every released Act 1 main chapter. Lettered scenes are exposed as branch choices at the relevant chapter.
+
+*choice
+  #Begin Act 1.
+    *goto_scene ch_00_prologue_floors_not_thrones
+  #Review the route contract.
+    This build routes all released Act 1 main chapters and optional lettered scenes through native ChoiceScript scenes.
+    *page_break
+    *goto_scene ch_00_prologue_floors_not_thrones
