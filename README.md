@@ -23,10 +23,14 @@ Open `http://localhost:8001/mygame/index.html`.
 python tools\check_release.py
 ```
 
-The deterministic gate runs public-scope validation, mirrors the generated game
-into the vendored ChoiceScript test harness, then runs quicktest and randomtest.
-In the local five-repo cluster, use `python tools\check_release.py --regenerate`
-to regenerate from `../starforge-narrative-tools/prose/act1` before validation.
+The deterministic gate runs public-scope validation, audits scene-list/path and
+dead-letter coverage, mirrors the generated game into the vendored ChoiceScript
+test harness, then runs quicktest and randomtest. For a clean strict local proof
+run, use
+`python tools\check_release.py --clean --fail-on-generated`. In the local
+five-repo cluster, use
+`python tools\check_release.py --clean --fail-on-generated --regenerate` to
+regenerate from `../starforge-narrative-tools/prose/act1` before validation.
 
 ## Cleanup boundary
 
@@ -36,6 +40,7 @@ Included:
 - `tools/generate_full_act1.py` source-to-scene generator
 - `tools/vendor/choicescript/` engine/test harness snapshot
 - deterministic Python gate
+- deterministic playtest/path audit
 - repo-brain and spec docs
 
 Excluded:

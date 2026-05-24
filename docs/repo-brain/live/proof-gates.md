@@ -24,8 +24,22 @@
 - `quicktest.js` passes.
 - `randomtest.js game=starforge_test num=10000 seed=0 showCoverage=false showChoices=false` passes.
 
-## Gate 5 - Manual Smoke
+## Gate 5 - Playtest Path And Queue Audit
+
+- `python tools/playtest_audit.py` checks the scene list, generated scene
+  files, scene references, choices, and stat mutations.
+- Dead-letter markers are reported as a queue.
+- Missing scene targets or missing Act 1 ending block the release gate.
+
+## Gate 6 - Manual Smoke
 
 - `web/mygame/index.html` opens in a browser through a local static server.
 - A player can start Act 1, branch into optional scenes, and finish the Act 1
   route.
+
+## Gate 7 - Cleanup
+
+- `python tools/check_release.py --clean --fail-on-generated` removes stale
+  generated test harness copies before validation.
+- `tools/vendor/choicescript/web/starforge_test/` must not remain after the
+  gate finishes.

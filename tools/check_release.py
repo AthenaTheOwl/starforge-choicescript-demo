@@ -48,10 +48,26 @@ def clean_test_game() -> None:
         shutil.rmtree(TEST_GAME)
 
 
+def verify_no_generated_artifacts() -> int:
+    if not TEST_GAME.exists():
+        return 0
+
+    print("\n== Generated artifact check ==")
+    print("release gate found generated ChoiceScript test harness copy:")
+    print(f"- {TEST_GAME.relative_to(ROOT).as_posix()}")
+    print("rerun with --clean or remove the generated test game copy")
+    return 1
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--clean", action="store_true", help="Remove generated ChoiceScript test harness copy before and after checks.")
+    parser.add_argument("--fail-on-generated", action="store_true", help="Fail if the generated ChoiceScript test harness copy remains after checks.")
     parser.add_argument("--regenerate", action="store_true", help="Regenerate ChoiceScript scenes from the sibling public Act 1 corpus before validating.")
     args = parser.parse_args()
+
+    if args.clean:
+        clean_test_game()
 
     if not (ENGINE / "quicktest.js").exists():
         print("ChoiceScript engine missing; expected tools/vendor/choicescript/quicktest.js")
@@ -61,6 +77,7 @@ def main() -> int:
     if args.regenerate:
         failures += run("Full Act 1 route generation", [sys.executable, "tools/generate_full_act1.py"])
     failures += run("Public-scope validation", [sys.executable, "tools/validate_public_scope.py"])
+    failures += run("Playtest path/dead-letter audit", [sys.executable, "tools/playtest_audit.py"])
 
     prepare_test_game()
     try:
@@ -80,6 +97,8 @@ def main() -> int:
         )
     finally:
         clean_test_game()
+    if args.fail_on_generated:
+        failures += verify_no_generated_artifacts()
 
     if failures:
         print(f"\nrelease gate failed: {failures} check(s) failed")
