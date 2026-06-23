@@ -9,6 +9,25 @@ The repo is separate from the Twine, Ren'Py, and Godot versions. ChoiceScript
 proves the stat-forward choice-game path; it is not the Twine single-HTML
 build, Ren'Py visual novel, or Godot RPG prototype.
 
+## Live demo
+
+The `web/` directory is a fully self-contained, static ChoiceScript build (the
+vendored ChoiceScript runtime plus the generated Act 1 game). It needs no build
+step and no server-side code, so it deploys to Vercel as a static site.
+
+- Deploy target: Vercel (static, no build). Config: [`vercel.json`](vercel.json)
+  sets `outputDirectory: "web"` with no build command.
+- Entry point: `web/index.html`, which redirects to `web/mygame/index.html`.
+
+Deploy from this repo root with the Vercel CLI:
+
+```bash
+vercel deploy --prod
+```
+
+Or import the repo in the Vercel dashboard; the included `vercel.json` serves
+`web/` directly with no framework preset.
+
 ## Run locally
 
 ```powershell
