@@ -119,6 +119,9 @@ Left out on purpose: unreleased later-act prose and spec content, runtime logs a
 generated test output, and the Ren'Py / Godot / Twine build artifacts that live in
 their own repos.
 
+[Current verification scope](docs/verification-scope.md) records the October 18,
+2026 quicktest and 10,000-iteration seeded randomtest, with their coverage limits.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
