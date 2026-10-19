@@ -14,5 +14,9 @@ or reads them. Quicktest and randomtest therefore cover routing and
 reachability only; this build has no stat logic for them to exercise.
 
 A seeded random run is repeatable sampling. It does not prove that every
-possible choice sequence or narrative payoff works. Review coverage and add a
-deliberate path when an important branch is missed.
+possible choice sequence or narrative payoff works. The gate runs randomtest
+with `showCoverage=false`. To review line coverage, copy `web/mygame` to
+`tools/vendor/choicescript/web/starforge_test`, run
+`node randomtest.js game=starforge_test num=10000 seed=0 showCoverage=true`
+from `tools/vendor/choicescript`, then delete the copy. A run of that command
+on October 19, 2026 hit every non-blank scene line at least once.
