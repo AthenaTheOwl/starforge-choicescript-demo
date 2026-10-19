@@ -28,7 +28,12 @@ python tools\check_release.py
 ```
 
 ```
+== Public-scope validation ==
++ python tools/validate_public_scope.py
 public-scope validation passed
+
+== Playtest path/dead-letter audit ==
++ python tools/playtest_audit.py
 ChoiceScript playtest audit
 - scene_list entries: 67
 - scene files: 68
@@ -37,12 +42,6 @@ ChoiceScript playtest audit
 - scene refs: 143
 - dead-letter marker hits: 0
 playtest audit passed
-
-== Public-scope validation ==
-+ C:\Python314\python.exe tools/validate_public_scope.py
-
-== Playtest path/dead-letter audit ==
-+ C:\Python314\python.exe tools/playtest_audit.py
 
 == ChoiceScript quicktest ==
 + node quicktest.js starforge_test
