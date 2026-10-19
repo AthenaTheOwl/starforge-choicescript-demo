@@ -2,21 +2,23 @@
 
 The medical bay has six cots and four are taken. Worker 394 gets forty-eight hours
 off-shift, unpaid, interest accruing at standard rates, and a waiver to sign. That
-scene is one of 67 here, wired into a stat sheet that watches what you decide.
+scene is one of 67 here, with a stat sheet drawn up beside them that no choice
+writes on yet.
 
 ## What it does
 
 [Starforge Canticles](https://www.royalroad.com/fiction/149065/starforge-canticles)
 is a serialized speculative-fiction novel by Cessnya Lin. This repo takes the full
 released Act 1 route and turns it into a playable ChoiceScript game: every main
-chapter, the optional lettered scenes hanging off them, and five stats that track
-the kind of person you're being about it — resolve, empathy, tech, lattice,
-crew_trust, all starting at a neutral 50, plus a counter for scenes seen.
+chapter, the optional lettered scenes hanging off them, and five declared stats —
+resolve, empathy, tech, lattice, crew_trust, all starting at a neutral 50 — plus a
+counter for scenes seen. The stats show on the stats screen, but no choice reads or
+changes them yet; the scene counter is the only number that moves.
 
 ChoiceScript is the stat-forward branch of the family. The Twine, Ren'Py, and Godot
-builds tell the same Act 1 a different way; this one is the version where every
-choice is a number moving on a sheet, and a test harness that plays the game ten
-thousand times to make sure none of those choices walks you into a wall.
+builds tell the same Act 1 a different way; this one is the version built around a
+stat sheet, and a test harness that plays the game ten thousand times to make sure
+none of those choices walks you into a wall.
 
 ## Try it
 
@@ -54,7 +56,9 @@ RANDOMTEST PASSED
 release gate passed
 ```
 
-143 choices, 65 stat mutations, zero dead letters. randomtest sends 10,000 blind
+143 choices, 65 `*set` lines, zero dead letters. The audit calls those lines "stat
+mutations", but all 65 are `*set scenes_seen +1`, the scene counter ticking over;
+none touches the five stats, and no `*if` reads them. randomtest sends 10,000 blind
 playthroughs through the whole branch tree on a fixed seed; if any of them hit a
 scene that doesn't exist or a `*goto` with nowhere to land, the gate fails and so
 does the build. Green means the route holds.
