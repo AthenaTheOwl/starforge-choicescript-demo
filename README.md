@@ -2,33 +2,43 @@
 
 The medical bay has six cots and four are taken. Worker 394 gets forty-eight hours
 off-shift, unpaid, interest accruing at standard rates, and a waiver to sign. That
-scene is one of 67 here, wired into a stat sheet that watches what you decide.
+scene is one of 67 here, with a stat sheet drawn up beside them that no choice
+writes on yet.
 
 ## What it does
 
 [Starforge Canticles](https://www.royalroad.com/fiction/149065/starforge-canticles)
 is a serialized speculative-fiction novel by Cessnya Lin. This repo takes the full
 released Act 1 route and turns it into a playable ChoiceScript game: every main
-chapter, the optional lettered scenes hanging off them, and five stats that track
-the kind of person you're being about it — resolve, empathy, tech, lattice,
-crew_trust, all starting at a neutral 50, plus a counter for scenes seen.
+chapter, the optional lettered scenes hanging off them, and five declared stats —
+resolve, empathy, tech, lattice, crew_trust, all starting at a neutral 50 — plus a
+counter for scenes seen. The stats show on the stats screen, but no choice reads or
+changes them yet; the scene counter is the only number that moves.
 
-ChoiceScript is the stat-forward branch of the family. The Twine, Ren'Py, and Godot
-builds tell the same Act 1 a different way; this one is the version where every
-choice is a number moving on a sheet, and a test harness that plays the game ten
-thousand times to make sure none of those choices walks you into a wall.
+ChoiceScript is the stat-sheet branch of the family. The Twine, Ren'Py, and Godot
+builds tell the same Act 1 a different way; this one is the version built around a
+stat sheet, and a test harness that plays the game ten thousand times to make sure
+none of those choices walks you into a wall.
 
 ## Try it
 
-One command. It runs the release gate — schema checks, a path-and-dead-letter audit,
+One command. It runs the release gate — a public-scope check, a path-and-dead-letter audit,
 then ChoiceScript's own quicktest and randomtest against the vendored engine:
 
 ```powershell
 python tools\check_release.py
 ```
 
+Abridged output (the `+` lines print your full interpreter path, and the timing
+varies by machine):
+
 ```
+== Public-scope validation ==
++ python tools/validate_public_scope.py
 public-scope validation passed
+
+== Playtest path/dead-letter audit ==
++ python tools/playtest_audit.py
 ChoiceScript playtest audit
 - scene_list entries: 67
 - scene files: 68
@@ -38,12 +48,6 @@ ChoiceScript playtest audit
 - dead-letter marker hits: 0
 playtest audit passed
 
-== Public-scope validation ==
-+ C:\Python314\python.exe tools/validate_public_scope.py
-
-== Playtest path/dead-letter audit ==
-+ C:\Python314\python.exe tools/playtest_audit.py
-
 == ChoiceScript quicktest ==
 + node quicktest.js starforge_test
 QUICKTEST PASSED
@@ -51,11 +55,16 @@ QUICKTEST PASSED
 == ChoiceScript randomtest ==
 + node randomtest.js game=starforge_test num=10000 seed=0 showCoverage=false showChoices=false
 RANDOMTEST PASSED
+Time: <n>s
 
 release gate passed
 ```
 
-143 choices, 65 stat mutations, zero dead letters. randomtest sends 10,000 blind
+143 choice options across 66 choice points, 65 `*set` lines, zero dead letters
+(the audit reports dead-letter markers but does not fail the gate on them). The
+audit calls those `*set` lines "stat mutations", but all 65 are
+`*set scenes_seen +1`, the scene counter ticking over;
+none touches the five stats, and no `*if` reads them. randomtest sends 10,000 blind
 playthroughs through the whole branch tree on a fixed seed; if any of them hit a
 scene that doesn't exist or a `*goto` with nowhere to land, the gate fails and so
 does the build. Green means the route holds.
@@ -97,7 +106,7 @@ Open `http://localhost:8001/mygame/index.html`.
 
 ## How it connects
 
-Same Act 1, four playable shapes. This repo is the stat-game one; the rest of the
+Same Act 1, four playable shapes. This repo is the stat-sheet one; the rest of the
 Starforge cluster does it differently:
 
 - [starforge-narrative-tools](https://github.com/AthenaTheOwl/starforge-narrative-tools) — the public Act 1 corpus plus the conversion and validation tooling everything else feeds from.

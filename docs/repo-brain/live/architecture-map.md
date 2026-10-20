@@ -1,6 +1,6 @@
 # Architecture Map
 
-`starforge-choicescript-demo` is the full Act 1 stat-forward choice-game
+`starforge-choicescript-demo` is the full Act 1 stat-sheet choice-game
 adaptation in the Starforge portfolio cluster.
 
 ## Boundaries

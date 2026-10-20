@@ -2,7 +2,7 @@
   "name": "starforge-choicescript-demo",
   "version": "0.1.0",
   "private": true,
-  "description": "ChoiceScript stat-forward demo for the full released Act 1 Starforge route.",
+  "description": "ChoiceScript stat-sheet demo for the full released Act 1 Starforge route.",
   "scripts": {
     "test": "python tools/check_release.py"
   },
