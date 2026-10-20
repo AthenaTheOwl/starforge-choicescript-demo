@@ -19,4 +19,5 @@ with `showCoverage=false`. To review line coverage, copy `web/mygame` to
 `tools/vendor/choicescript/web/starforge_test`, run
 `node randomtest.js game=starforge_test num=10000 seed=0 showCoverage=true`
 from `tools/vendor/choicescript`, then delete the copy. A run of that command
-on October 19, 2026 hit every non-blank scene line at least once.
+on October 19, 2026 hit every non-blank line of the 67 routed scenes at least
+once; the stats screen (`choicescript_stats.txt`) is not exercised by randomtest.
